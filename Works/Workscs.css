@@ -1,0 +1,175 @@
+@font-face {
+  font-family: 'forest';
+  src: url('../Fonts/LofiForest_W-Bold.woff2') format('woff2');
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  color: white !important;
+  text-decoration: none;
+  cursor: none;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.loading-logo {
+  max-width: 100px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.loaded {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.title {
+  font-family: 'forest', sans-serif;
+  position: relative; /* Cambiato da fixed a relative */
+  padding-top: 25px;
+  padding-bottom: 0;
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+  font-size: 10vw;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+  height: 160px;
+}
+@media (max-width: 768px) {
+  .title {
+    height: 87px; 
+  }
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  padding: 0;
+  margin-top: 0; /* Cambiato da 160px a 0 perché ora il titolo non è più in posizione fixed */
+  background-color: #000;
+  font-family: 'forest', sans-serif;
+  bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1;
+}
+
+.grid-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+}
+
+.grid-item .image-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 4vw;
+  color: transparent;
+  transition: color 0.3s, filter 0.3s;
+}
+
+.grid-item:hover img {
+  filter: blur(5px) brightness(50%);
+}
+
+.grid-item:hover .image-title {
+  color: white;
+}
+
+.back-link {
+  font-family: 'forest', sans-serif;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  z-index: 1000;
+  font-size: 10vw;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+  padding-top: 25px;
+  height: 200px;
+}
+
+.back-link a:hover {
+  color: #fed9ff !important;
+  text-decoration: none !important;
+}
+
+.cursor {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background-image: url('../Immagini/cursor.png');
+  background-size: cover;
+  pointer-events: none;
+  transition: transform 0.3s ease-out;
+  z-index: 10000;
+  visibility: visible;
+  mix-blend-mode: difference;
+}
+
+.cursor-link {
+  background-image: url('../Immagini/cursorlink.png');
+  background-size: cover;
+}
+
+.map-container iframe {
+  pointer-events: none;
+}
+
+@media (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}

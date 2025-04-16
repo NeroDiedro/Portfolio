@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simone Salluce: Portfolio</title>
+  <link rel="stylesheet" href="portfoliocs.css">
+  <link rel="icon" href="Immagini/loads ico.png" type="image/x-icon"/>
+  <link rel="preload" href="Fonts/LofiForest_W-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="Fonts/PPMondwest-Regular.otf" as="font" type="font/truetype" crossorigin>
+</head>
+
+<body>
+  <div class="loading-overlay" id="loadingOverlay">
+    <img src="Immagini/loads ico.png" alt="Loading Logo" class="loading-logo">
+  </div>
+
+  <!-- Contenuto principale -->
+  <div id="main-content">
+    <!-- Elemento per il typewriter -->
+    <h1 id="titoloprimo"></h1>
+    <h2 id="freccia">↓</h2>
+    <h2 id="titolosecondo">Graphic Design - 3d modelling - Product Design - Illustration.</h2>
+    
+    <div id="slideseconda">
+      <h1 id="slideduetitolo">PASSIONE NERA</h1>
+      <img src="Immagini/Me stesso.jpg" alt="me stesso" id="immagine" loading="lazy">
+      <div class="box">
+        <h1 id="compvisione">VISIONE</h1>
+        <p>Fin da quando sono bambino non mi sono mai accontentato di ciò che esiste. Non costruito per un mondo fatto di etichette, ritengo la <strong>ricerca e la sperimentazione</strong> essenziali per costruire l'immagine di un <strong>nuovo mondo</strong> non conforme e libero, esplorando gli anfratti più nascosti della natura umana, il mio lavoro parla da sempre a coloro che non hanno paura di urlare il proprio dissenso fino all'autodistruzione.</p>
+      </div>
+      
+      <!-- Nuovo div per immagini random -->
+      <div id="random-images-container"></div>
+    </div>
+    
+    <div id="slideterza">
+      <h1 id="slidetretitolo">DOVE TROVARMI</h1>
+      <iframe id="gmaps" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2820.3883220878497!2d7.633887999999999!3d45.017042!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4788131ca7b43743%3A0xa7da1f0d7d9bb4ba!2sVia%20Palmiro%20Togliatti%2C%2023%2C%2010135%20Torino%20TO!5e0!3m2!1sit!2sit!4v1738061061625!5m2!1sit!2sit" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      
+      <div class="contenitore">
+        <h1 class="titolo">Contattami</h1>
+        <div class="griglia">
+          <div class="colonna">
+            <img src="Immagini/telefono.png" alt="Telefono" class="icona" loading="lazy"><br><br><b>Telefono:</b> 3774942712
+          </div>
+          <div class="colonna">
+            <img src="Immagini/mail icon.png" alt="Email" class="icona" loading="lazy"><br><br><b>Email:</b> momosall003@gmail.com.com
+          </div>
+          <div class="colonna">
+            <a href="https://www.instagram.com/nerodiedro" target="_blank">
+                <img src="Immagini/instagram icon.png" alt="Instagram" class="icona" loading="lazy"><br><br>
+                <b>Instagram:</b> @nerodiedro
+            </a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video di background -->
+  <video autoplay muted loop playsinline id="video-background">
+    <source src="Video/winter-forest-4k-t53film_1_1.mp4" type="video/mp4">
+    Il tuo browser non supporta il tag video.
+  </video>
+
+  <!-- Header orizzontale -->
+  <header id="main-header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="Immagini/LOADS ICO BLACK.png" alt="Logo">
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="About me/About.html">About Me</a>
+      <a href="Works/Works.html">Works</a>
+      <a href="#slideterza">Contacts</a>
+    </nav>
+  </header>
+
+  <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script>
+  <script src="portfolioscr.js"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../Immagini/loads ico.png" type="image/x-icon"/>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .caricamento {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease-in 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        .loading-logo {
+            max-width: 100px;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1); }
+            100% { transform: scale(0.95); }
+        }
+
+        @font-face {
+            font-family: "forest";
+            src: url("../Fonts/LofiForest_W-Bold.woff2") format("woff2");
+        }
+        @font-face {
+            font-family: 'PPMondwest';
+            src: url('../Fonts/PPMondwest-Regular.otf') format('truetype');
+            font-display: swap;
+        }
+        
+        body {
+            background-color: #000; 
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .due-colonne {
+            padding: 0px 0;
+            margin-top: 60px;
+        }
+
+        .testi {
+            padding-left: 0;
+        }
+
+        h1 {
+            font-family: "forest", sans-serif; 
+            font-size: 100px;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-family: "PPMondwest", sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        q {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: "forest", sans-serif; 
+            font-size: 50px; 
+            color: #ffffff;
+            transition: color 0.3s ease;
+            margin-top: 30px;
+        }
+
+        h2:hover {
+            color: #ffc0f6; 
+        }
+
+        .cursor {
+            position: fixed;
+            width: 50px; 
+            height: 50px; 
+            background-image: url('../Immagini/cursor.png'); 
+            background-size: cover;
+            pointer-events: none; 
+            transition: transform 0.1s ease-out;
+            z-index: 10000; 
+            visibility: visible; 
+            transition: transform 0.3s ease-out;
+            mix-blend-mode: difference;
+        }
+        
+        .cursor-link {
+            background-image: url('../Immagini/cursorlink.png'); 
+            background-size: cover;
+            mix-blend-mode: difference;
+        }
+        
+        .map-container iframe {
+            pointer-events: none; 
+        }
+        
+        a {
+            cursor: none; 
+        }
+
+        /* Carosello personalizzato */
+        .carousel-inner {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Stili responsive migliorati */
+        @media (max-width: 991px) {
+            .due-colonne {
+                margin-top: 40px;
+            }
+            
+            h1 {
+                font-size: 80px;
+                margin-top: 30px;
+            }
+            
+            h2 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .due-colonne {
+                margin-top: 30px;
+            }
+            
+            h1 {
+                font-size: 60px;
+                margin-top: 30px;
+                text-align: center;
+            }
+            
+            p {
+                font-size: 15px;
+                padding: 0 15px;
+                text-align: justify;
+            }
+            
+            q {
+                padding: 0 15px;
+                font-style: italic;
+                display: block;
+                text-align: center;
+                margin-bottom: 25px;
+            }
+            
+            h2 {
+                font-size: 35px;
+                text-align: center;
+            }
+            
+            .carousel-inner {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            h1 {
+                font-size: 46px;
+            }
+            
+            p {
+                font-size: 14px;
+                line-height: 1.5;
+                padding: 0 10px;
+            }
+            
+            h2 {
+                font-size: 30px;
+            }
+            
+            .due-colonne {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="caricamento">
+        <img src="../Immagini/loads ico.png" alt="Logo Caricamento" class="loading-logo" />
+    </div>
+
+    <!-- Contenuto principale -->
+    <div class="container due-colonne">
+        <div class="row">
+            <!-- Colonna carosello -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <!-- Inizio carosello -->
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../Immagini/io3.jpg" class="d-block w-100" alt="Immagine 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../Immagini/io2.jpg" class="d-block w-100" alt="Immagine 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../Immagini/io1.jpg" class="d-block w-100" alt="Immagine 3">
+                        </div>
+                    </div>
+                </div>
+                <!-- Fine carosello -->
+            </div>
+
+            <!-- Colonna testo -->
+            <div class="col-md-6 testi">
+                <h1>ABOUT ME</h1>
+                <p>Crescendo in un ambiente rurale, ho riflettuto su come la vita sia un riflesso del contesto in cui viviamo e delle esperienze che facciamo. Credo che la forma dei nostri corpi e dei nostri pensieri si adatti e evolva in risposta alle nuove esigenze. Il design, per me, nasce da un processo creativo fluido e libero, e la sua essenza risiede nell'abilità di tradurre questo linguaggio naturale in espressione, significato, forma e funzione.</p>
+                <p>Mi chiamo Simone Salluce, sono nato nel 2003 ad Acquaviva delle Fonti, un piccolo paese in provincia di Bari. Cresciuto in un ambiente rurale, ho sempre avuto un forte legame con la natura. Fin da giovane, mi sono appassionato alla creatività e al design.</p>
+                <p>Attualmente sono uno studente di design, Sono affascinato dall'idea di come gli oggetti e le idee possano influenzare la nostra vita. Durante il mio percorso accademico, ho sviluppato un interesse particolare per il design sostenibile e per l'importanza di creare soluzioni che siano funzionali, ma anche in armonia con l'ambiente in cui viviamo.</p>
+                <p>Nel mio tempo libero, amo esplorare nuove tecnologie, materiali e tecniche creative, sempre alla ricerca di ispirazione che possa arricchire il mio approccio progettuale.</p>
+                <a href="../index.html" class="text-decoration-none">
+                    <h2>Torna indietro</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Rimozione schermata di caricamento
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.caricamento');
+            loader.addEventListener('animationend', function() {
+                loader.remove();
+            });
+        });
+
+        // Cursore personalizzato
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            cursor.style.left = `${mouseX - cursor.offsetWidth / 2}px`;
+            cursor.style.top = `${mouseY - cursor.offsetHeight / 2}px`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursor.style.visibility = 'hidden'; 
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursor.style.visibility = 'visible'; 
+        });
+
+        // Applica cursor-link a tutti i link
+        const links = document.querySelectorAll('a, button');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursor.classList.add('cursor-link'); 
+            });
+
+            link.addEventListener('mouseleave', () => {
+                cursor.classList.remove('cursor-link'); 
+            });
+        });
+
+        // Nascondi il cursore sui dispositivi touch
+        function isTouchDevice() {
+            return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        }
+
+        if (isTouchDevice()) {
+            cursor.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

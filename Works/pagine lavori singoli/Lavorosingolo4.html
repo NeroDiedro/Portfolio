@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>9-Thermidor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="icon" href="../../Immagini/marchio icon.png" type="image/x-icon"/>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Schermata di caricamento */
+    .caricamento {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease-in 1s forwards;
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; visibility: hidden; }
+    }
+    .loading-logo {
+      max-width: 100px;
+      animation: pulse 1s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.95); }
+      50% { transform: scale(1); }
+      100% { transform: scale(0.95); }
+    }
+    
+    @font-face {
+      font-family: "forest";
+      src: url("../../Fonts/LofiForest_W-Bold.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: 'PPMondwest';
+      src: url('../../Fonts/PPMondwest-Regular.otf') format('truetype');
+      font-display: swap;
+    }
+    
+    body {
+      background-color: #000;
+      color: white;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .layout-container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+    
+    /* Carosello: ora la sezione sinistra occupa il 60% della larghezza */
+    .fixed-half {
+      width: 60%;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+    }
+    
+    /* Sezione testuale: 40% di larghezza, posizionata a destra */
+    .scrollable-half {
+      width: 40%;
+      margin-left: 60%;
+      min-height: 100vh;
+      padding: 70px 20px;
+    }
+    
+    /* Carosello "tapis roulant" */
+    .carousel-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .carousel-custom {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      /* La durata dell'animazione può essere modificata a piacimento */
+      animation: scroll 30s linear infinite;
+    }
+    
+    /* Ogni slide non ha gap e occupa la dimensione automatica */
+    .carousel-slide {
+      flex: 0 0 auto;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Le immagini e i video sono contenuti verticalmente (100vh) */
+    .carousel-slide img,
+    .carousel-slide video {
+      display: block;
+      height: 100vh;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    
+    /* L'animazione scorre l'intera lunghezza delle slide disponibili.
+       Corretto per mostrare tutte le immagini prima di ricominciare */
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-100% + 100% / 6)); }
+    }
+    
+    .testi {
+      padding-left: 0;
+    }
+    
+    h1 {
+      font-family: "forest", sans-serif;
+      font-size: 100px;
+      line-height: 1;
+    }
+    
+    p {
+      font-family: "PPMondwest", sans-serif;
+      font-weight: 100;
+    }
+    
+    h2 {
+      font-family: "forest", sans-serif;
+      font-size: 70px;
+      color: #ffffff;
+      transition: color 0.3s ease;
+    }
+    h2:hover {
+      color: #ffc0f6;
+    }
+    
+    .cursor {
+      position: fixed;
+      width: 50px;
+      height: 50px;
+      background-image: url('../../Immagini/cursor.png');
+      background-size: cover;
+      pointer-events: none;
+      z-index: 10000;
+      visibility: visible;
+      transition: transform 0.3s ease-out;
+      mix-blend-mode: difference;
+    }
+    
+    .cursor-link {
+      background-image: url('../../Immagini/cursorlink.png');
+      background-size: cover;
+      mix-blend-mode: difference;
+    }
+    
+    a {
+      cursor: none;
+    }
+    
+    /* Responsive: per dispositivi mobili, disponi in colonna invertita */
+    @media (max-width: 768px) {
+      .layout-container {
+        flex-direction: column;
+        height: auto;
+      }
+      
+      /* Parte testuale in cima */
+      .scrollable-half {
+        width: 100%;
+        margin-left: 0;
+        order: 1;
+        padding: 40px 20px;
+        min-height: auto;
+      }
+      
+      /* Carosello sotto */
+      .fixed-half {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        order: 2;
+      }
+      
+      .carousel-custom {
+        height: 100vh;
+      }
+      
+      .carousel-slide {
+        height: 100vh;
+      }
+      
+      .carousel-slide img,
+      .carousel-slide video {
+        height: 100vh;
+        object-fit: contain;
+      }
+      
+      h1 {
+        font-size: 60px;
+      }
+      
+      h2 {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Schermata di caricamento -->
+  <div class="caricamento">
+    <img src="../../Immagini/loads ico.png" alt="Logo Caricamento" class="loading-logo" />
+  </div>
+  
+  <!-- Layout principale -->
+  <div class="layout-container">
+    <!-- Carosello "tapis roulant" (60% di larghezza) -->
+    <div class="fixed-half">
+      <div class="carousel-wrapper">
+        <div class="carousel-custom">
+          <div class="carousel-slide">
+            <img src="../../Immagini/WorksImg/mater morsa post/the1.jpg" alt="Thermidor 1" />
+          </div>
+          <div class="carousel-slide">
+            <video autoplay muted loop playsinline>
+              <source src="../../Immagini/WorksImg/mater morsa post/the2.mp4" type="video/mp4" />
+              Il tuo browser non supporta il tag video.
+            </video>
+          </div>
+          <div class="carousel-slide">
+            <img src="../../Immagini/WorksImg/mater morsa post/the3.jpg" alt="Thermidor 3" />
+          </div>
+          <div class="carousel-slide">
+            <video autoplay muted loop playsinline>
+              <source src="../../Immagini/WorksImg/mater morsa post/the4.mp4" type="video/mp4" />
+              Il tuo browser non supporta il tag video.
+            </video>
+          </div>
+          <!-- Cloni per effetto loop continuo -->
+          <div class="carousel-slide">
+            <img src="../../Immagini/WorksImg/mater morsa post/the1.jpg" alt="Thermidor 1 Clone" />
+          </div>
+          <div class="carousel-slide">
+            <video autoplay muted loop playsinline>
+              <source src="../../Immagini/WorksImg/mater morsa post/the2.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Sezione testuale (40% di larghezza) -->
+    <div class="scrollable-half">
+      <div class="testi">
+        <h1>9-Ther <br> midor</h1>
+        <p>9 Thermidor è un progetto musicale che mescola black metal, post-metal e atmosfere evocative. La band crea paesaggi sonori intensi, alternando momenti oscuri e malinconici a passaggi più riflessivi e lirici. Il nome, ispirato al calendario rivoluzionario francese, riflette le tematiche di cambiamento e decadenza che permeano la loro musica, esplorando la lotta interiore e la rinascita attraverso suoni potenti e atmosferici.</p>
+        <p>Era estate quando ho conosciuto 9-Thermidor ad un festival di musica estrema, stregato dal racconto del suo progetto non ho potuto fare a meno di investire anima e corpo per dare vita alla sua visione distopica e spietata di un mondo industriale governato dalle macchine una visione legata a doppio filo con la città di Taranto.</p>
+        <a href="https://www.instagram.com/p/DIOcLM9MPcp/?img_index=1" class="text-decoration-none">
+            <h2>see more</h2>
+          </a>
+        <a href="../../Works/Works.html" class="text-decoration-none">
+          <h2>Indietro</h2>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Rimozione della schermata di caricamento
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.caricamento');
+      loader.addEventListener('animationend', () => {
+        loader.remove();
+      });
+    });
+    
+    // Cursore personalizzato
+    const cursor = document.createElement('div');
+    cursor.classList.add('cursor');
+    document.body.appendChild(cursor);
+    
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      cursor.style.left = `${mouseX - cursor.offsetWidth / 2}px`;
+      cursor.style.top = `${mouseY - cursor.offsetHeight / 2}px`;
+    });
+    
+    document.addEventListener('mouseleave', () => {
+      cursor.style.visibility = 'hidden';
+    });
+    
+    document.addEventListener('mouseenter', () => {
+      cursor.style.visibility = 'visible';
+    });
+    
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor-link');
+      });
+      link.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor-link');
+      });
+    });
+  </script>
+</body>
+</html>
